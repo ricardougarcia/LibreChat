@@ -39,8 +39,9 @@ RUN \
 
 COPY --chown=node:node . .
 
-# Reinstall dependencies to get platform-specific binaries (fixes Rollup issue)
-RUN npm install --no-audit
+# Fix npm platform-specific dependency issue for Alpine Linux
+# Temporarily remove package-lock.json and force fresh install for this platform
+RUN rm -f package-lock.json && npm install --no-audit
 
 RUN \
     # Build all packages (frontend script builds data-provider, data-schemas, api, client-package, and client)
