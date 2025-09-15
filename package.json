@@ -37,6 +37,8 @@
     "delete-banner": "node config/delete-banner.js",
     "backend": "cross-env NODE_ENV=production node api/server/index.js",
     "backend:dev": "cross-env NODE_ENV=development npx nodemon api/server/index.js",
+    "backend:dev:direct": "cross-env NODE_ENV=development node api/server/index.js",
+    "backend:dev:watch": "cross-env NODE_ENV=development node --watch api/server/index.js",
     "backend:stop": "node config/stop-backend.js",
     "build:data-provider": "cd packages/data-provider && npm run build",
     "build:api": "cd packages/api && npm run build",
@@ -80,7 +82,9 @@
     "migrate:agent-permissions:batch": "node config/migrate-agent-permissions.js --batch-size=50",
     "migrate:prompt-permissions:dry-run": "node config/migrate-prompt-permissions.js --dry-run",
     "migrate:prompt-permissions": "node config/migrate-prompt-permissions.js",
-    "migrate:prompt-permissions:batch": "node config/migrate-prompt-permissions.js --batch-size=50"
+    "migrate:prompt-permissions:batch": "node config/migrate-prompt-permissions.js --batch-size=50",
+    "health-check": "node scripts/check-dependencies.js",
+    "fix-deps": "npm run health-check && npm run reinstall"
   },
   "repository": {
     "type": "git",
@@ -151,8 +155,16 @@
       "data/",
       "client/",
       "admin/",
-      "packages/"
-    ]
+      "packages/",
+      "*.log",
+      "node_modules/",
+      "build/",
+      "dist/"
+    ],
+    "ext": "js,json",
+    "delay": "2500",
+    "verbose": false,
+    "restartable": "rs"
   },
   "dependencies": {
     "@smithy/eventstream-codec": "^4.1.1",
