@@ -39,6 +39,9 @@ RUN \
 
 COPY --chown=node:node . .
 
+# Reinstall dependencies to get platform-specific binaries (fixes Rollup issue)
+RUN npm install --no-audit
+
 RUN \
     # Build all packages (frontend script builds data-provider, data-schemas, api, client-package, and client)
     NODE_OPTIONS="--max-old-space-size=2048" npm run frontend
