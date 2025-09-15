@@ -173,6 +173,7 @@
     "@smithy/types": "^4.5.0",
     "@smithy/util-base64": "^4.1.0",
     "@smithy/util-hex-encoding": "^4.1.0",
-    "@smithy/util-utf8": "^4.1.0"
+    "@smithy/util-utf8": "^4.1.0",
+    "dompurify": "^3.2.6"
   }
 }
