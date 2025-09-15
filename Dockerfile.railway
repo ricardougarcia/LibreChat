@@ -39,6 +39,9 @@ RUN \
 
 COPY --chown=node:node . .
 
+# Cache buster - change this string to force complete rebuild
+RUN echo "cache-bust-2024-09-15-v1"
+
 # Fix npm platform-specific dependency issue for Alpine Linux
 # Clear cache and force complete clean reinstall to get proper Alpine Linux binaries
 RUN npm cache clean --force && rm -rf node_modules && npm install --no-audit
