@@ -40,10 +40,11 @@ RUN \
 COPY --chown=node:node . .
 
 RUN \
-    # React client build
-    NODE_OPTIONS="--max-old-space-size=2048" npm run frontend; \
-    npm prune --production; \
-    npm cache clean --force
+    # Build all packages (frontend script builds data-provider, data-schemas, api, client-package, and client)
+    NODE_OPTIONS="--max-old-space-size=2048" npm run frontend
+
+# Clean up after building (remove dev dependencies)
+RUN npm prune --production && npm cache clean --force
 
 # Node API setup
 EXPOSE 3080
