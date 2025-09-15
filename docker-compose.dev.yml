@@ -1,0 +1,6 @@
+# Development docker-compose override for local development
+# This exposes MongoDB port so local backend can connect to it
+services:
+  mongodb:
+    ports:
+      - "27017:27017"
