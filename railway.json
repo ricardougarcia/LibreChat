@@ -3,7 +3,7 @@
   "build": {
     "builder": "DOCKERFILE",
     "buildCommand": "",
-    "dockerfilePath": "Dockerfile.railway"
+    "dockerfilePath": "Dockerfile.railway-prebuilt"
   },
   "deploy": {
     "startCommand": "",

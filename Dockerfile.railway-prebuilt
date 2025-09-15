@@ -1,0 +1,9 @@
+# Use pre-built LibreChat image instead of building from source
+FROM ghcr.io/danny-avila/librechat-dev:latest
+
+# The image already has everything built and ready
+# Just need to expose the port
+EXPOSE 3080
+
+# Environment variables will be provided by Railway
+CMD ["npm", "run", "backend"]
