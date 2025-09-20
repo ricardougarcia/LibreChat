@@ -7,6 +7,62 @@
   </h1>
 </p>
 
+---
+
+# 🎯 TwinTakes.ai Development Environment
+
+> **This is a customized LibreChat deployment for [TwinTakes.ai](https://twintakes.ai)**
+
+## 🌿 Branch Strategy
+
+| Branch | Environment | URL | Purpose |
+|--------|-------------|-----|----------|
+| `main` | **Production** | https://twintakes.ai | Live site - customers use this |
+| `development` | **Staging** | https://librechat-production-ad79.up.railway.app | Safe testing environment |
+
+## 🚀 Development Workflow
+
+### For Contributors & Development:
+
+1. **Work on features in `development` branch**
+   ```bash
+   git checkout development
+   # Make your changes
+   git add .
+   git commit -m "Add feature: description"
+   git push origin development
+   ```
+
+2. **Test in staging environment**
+   - Automatic deployment to: https://librechat-production-ad79.up.railway.app
+   - Title shows "TwinTakes.ai - STAGING" to confirm you're testing
+   - Safe to experiment - won't affect live site
+
+3. **Deploy to production when ready**
+   ```bash
+   git checkout main
+   git merge development
+   git push origin main
+   ```
+   - Automatically deploys to: https://twintakes.ai
+
+## 📋 Environment Details
+
+- **Staging Database**: Separate MongoDB Atlas cluster (free tier)
+- **Production Database**: Production MongoDB Atlas cluster
+- **Deployment Platform**: Railway (both environments)
+- **Complete isolation**: Staging and production data never mix
+
+## ⚠️ Important Notes
+
+- **Never push directly to `main`** - always test in `development` first
+- **Staging is for testing only** - not for customer use
+- **Production changes affect live users** - test thoroughly first
+
+📚 **Full workflow documentation**: See `DEVELOPMENT_WORKFLOW.md`
+
+---
+
 <p align="center">
   <a href="https://discord.librechat.ai"> 
     <img
